@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/Ai.css" />
+	<script src="js/Ai.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+	<div id="Overrall">
+		<div id="Title">
+			功能演示
+		</div>
+		<div id="Type">
+			<div id="Plant">
+				植物识别
+			</div>
+			<div id="Animal">
+				动物识别
+			</div>
+			<div id="Dishes">
+				菜品识别
+			</div>
+			<div id="Models">
+				车型识别
+			</div>
+		</div>
+		<div id="Content">
+			<div id="Content_left">
+				<div id="Content_left_bg">
+					<div id="bg_flash"></div>
+				</div>
+				<div id="Content_left_search">
+					<div id="search">
+						<form enctype="application/x-www-form-urlencoded"
+							action="https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=fFjPUvq2BAeB2zquPdCYA4tv&client_secret=mkUvPvWQHtmq8bymSAbaKKbeAkmpvndM"
+							method="POST">
+							<input type="text" spellcheck="false" name="" id="input01" placeholder="请输入网络图片URL" />
+							<button id="button01">检测</button>
+							<div id="search_add">或</div>
+							<label id="search_local" onclick="addfile()">上传图片</label>
+							<input type="file" id="addfile" style="display:none">
+						</form>
+					</div>
+				</div>
+				<div id="Content_left_summary">
+					<div id="summary">
+						<div style="margin-bottom:14px; font-size: 16px;width: 222.4px;height: 16px;">
+							识别结果
+						</div>
+						<div id="summary_content">
+							<table id="summary_table">
+								<tr class="summary_tr">
+									<td class="summary-item-name">樱桃</td>
+									<td class="summary-item-length">
+										<div id="div1" class="Progress" style="width:43%;">
+										</div>
+									</td>
+									<td class="summary-item-degree">0.43</td>
+								</tr>
+								<tr class="summary_tr">
+									<td class="summary-item-name">高盆樱桃</td>
+									<td class="summary-item-length">
+										<div id="div2" class="Progress" style="width:21.9%;">
+										</div>
+									</td>
+									<td class="summary-item-degree">0.219</td>
+								</tr>
+								<tr class="summary_tr">
+									<td class="summary-item-name">石竹</td>
+									<td class="summary-item-length">
+										<div id="div3" class="Progress" style="width:19.4%;">
+										</div>
+									</td>
+									<td class="summary-item-degree">0.194</td>
+								</tr>
+								<tr class="summary_tr">
+									<td class="summary-item-name">山樱花</td>
+									<td class="summary-item-length">
+										<div id="div4" class="Progress" style="width:14.8%;">
+										</div>
+									</td>
+									<td class="summary-item-degree">0.148</td>
+								</tr>
+								<tr class="summary_tr">
+									<td class="summary-item-name">大山樱</td>
+									<td class="summary-item-length">
+										<div id="div5" class="Progress" style="width:14.2%;">
+										</div>
+									</td>
+									<td class="summary-item-degree">0.142</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="content_list">
+					<img id="img01" class="img"
+						src="http://aip.bdstatic.com/portal/dist/1552561680405/ai_images/imageRecognition/plants/1@2x.jpg">
+					<img id="img02" class="img"
+						src="http://aip.bdstatic.com/portal/dist/1552561680405/ai_images/imageRecognition/plants/2@2x.jpg">
+					<img id="img03" class="img"
+						src="http://aip.bdstatic.com/portal/dist/1552561680405/ai_images/imageRecognition/plants/3@2x.jpg">
+					<img id="img04" class="img"
+						src="http://aip.bdstatic.com/portal/dist/1552561680405/ai_images/imageRecognition/plants/4@2x.jpg">
+					<img id="img05" class="img"
+						src="http://aip.bdstatic.com/portal/dist/1552561680405/ai_images/imageRecognition/plants/5@2x.jpg">
+				</div>
+			</div>
+			<div id="Content_right">
+				<div id="json">
+					<div id="json_Title">
+						<div id="json_intro_title">
+							Request
+							<div id="json_intro_title_show">
+							</div>
+						</div>
+						<div id="json-intro-contain">
+							<div class="json-intro-header">
+								Params
+							</div>
+							<div class="json-intro-content">
+								image='图片的Base64编码'
+							</div>
+							<div class="json-intro-header">
+								Post
+							</div>
+							<div class="json-intro-content">
+								https://aip.baidubce.com/rest/2.0/image-classify/v2/plant?access_token='您的access_token'
+							</div>
+							<div class="json-intro-header">
+								Header
+							</div>
+							<div class="json-intro-content">
+								Content-Type:application/x-www-form-urlencoded
+							</div>
+						</div>
+					</div>
+					<div id="json_request">
+						<div id="json_request-title">
+							Response
+							<div id="json_request_show">
+							</div>
+						</div>
+						<div id="request">
+							<div id="json_request_content">
+								<a target="_blank" id="interface"
+									href="http://ai.baidu.com/docs#/ImageClassify-API/top">
+									查看接口文档 >
+								</a>
+								<div id="json_content">
+									<p>
+										{<br>
+										<span id="log_id"
+											class="title">"log_id"</span>:<span>"5867977175772484602"</span>,<br>
+										<span class="title" id="log_id1">"result"</span>
+										: [<br>
+										<p id="p2">
+											{<br>
+											<span class="title">"score"</span> :
+											<span id="score01">0.77805697917938</span>，<br>
+											<span class="title">"name"</span> :
+											<span class="name" id="name01">"女雏"</span> <br>
+											}，<br>
+											{<br>
+											<span class="title">"score"</span> :
+											<span id="score02">0.0688806027174</span>，<br>
+											<span class="title">"name"</span> :
+											<span class="name" id="name02">"玫瑰莲"</span><br>
+											}，<br>
+											{<br>
+											<span class="title">"score"</span> :
+											<span id="score03">0.020813312381506</span>，<br>
+											<span class="title" id="name03">"name"</span> :
+											<span class="name" id="name03">"石莲花"</span><br>
+											}，<br>
+											{<br>
+											<span class="title">"score"</span> :
+											<span id="score04">0.017694776877761</span>，<br>
+											<span class="title">"name"</span> :
+											<span class="name" id="name04">"紫罗兰女王"</span><br>
+											}，<br>
+											{<br>
+											<span class="title">"score"</span> :
+											<span id="score05">0.017623372375965</span>，<br>
+											<span class="title">"name"</span> :
+											<span class="name" id="name04">"红东云"</span><br>
+											} <br>
+										</p>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;] <br>
+										} <br>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
